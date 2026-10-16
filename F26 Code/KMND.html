@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="kMND.CSS"
-
-<title> K-MND</title>
+    <link rel="stylesheet" href="kMND.CSS">
+    <title> K-MND</title>
 </head>
 <body>
 
 <h1>K-MND</h1>
 
+<div class="carousel">
+    <div class="carousel-track">
+        <img src="https://images.pexels.com/photos/33688258/pexels-photo-33688258.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="A lively outdoor gathering with people interacting in a vibrant community setting.">
+        <img src="https://images.pexels.com/photos/34623598/pexels-photo-34623598.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="A diverse group of people engaging in conversation at an indoor gathering.">
+        <img src="https://images.pexels.com/photos/36883131/pexels-photo-36883131.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Elderly women enjoying a joyful indoor gathering, sharing smiles and companionship.">
+        <img src="https://images.pexels.com/photos/39744210/pexels-photo-39744210.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="A group of people in traditional and modern attire gather outdoors, showcasing cultural diversity and interaction.">
+        <img src="https://images.pexels.com/photos/3184308/pexels-photo-3184308.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Group of adults enjoying casual conversation indoors on bean bags, sharing happiness and smiles.">
+    </div>
+    <div class="carousel-nav">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
 <p>WHAT WOULD MAKE THIS A GOOD RESOURCE FOR ALL?
 </p>
-<p>The floor is the mileage weve attracted currently 
+<p>The floor is the mileage weve attracted currently
 The ceiling is eternal and evergrowing!
 </p>
 <p>Set up events that encourage and inspire conversation and new experiences!</p>
@@ -21,6 +37,28 @@ The ceiling is eternal and evergrowing!
 
 <p> we vibe coding so that we attract mileage coding so that when we actually add to the site it becomes even easier to make a resource that evokes fecundity and largesse!</p>
 
+<script>
+(function () {
+    const track = document.querySelector('.carousel-track');
+    const slides = track ? track.children.length : 0;
+    const dots = document.querySelectorAll('.dot');
+    let current = 0;
 
+    function go(index) {
+        if (!track || slides === 0) return;
+        current = (index + slides) % slides;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function (d, i) {
+            d.classList.toggle('active', i === current);
+        });
+    }
+
+    dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () { go(i); });
+    });
+
+    setInterval(function () { go(current + 1); }, 4000);
+})();
+</script>
 </body>
 </html>
